@@ -1,46 +1,74 @@
-# Getting Started with Create React App
+# Homebrary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div style="text-align: center">
+<img src="./public/homebrary-logo.PNG" alt="로고" width="150px"/>
+<h1>캡스톤 도서관 - Homebrary</h1>
+</div>
 
-## Available Scripts
 
-In the project directory, you can run:
+[API 명세서](https://www.notion.so/kawooubox/API-a2f10a108a324d17973bfbbcb54ad64f) 
 
-### `npm start`
+[figma 주소](https://www.figma.com/file/TgcgnAHS0whuyprjFooV5I/%EC%BA%A1%EC%8A%A4%ED%86%A4?node-id=54%3A2052)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##  📖 Intro: 서비스 소개
 
-### `npm test`
+## 👤 Userflow: 유저플로우
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📱 Pages: 주요 화면 소개
 
-### `npm run build`
+## 🛠 Skills: 개발환경 및 기술스택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
+<img src="https://img.shields.io/badge/Emotion-EFD1EA?style=flat-square&logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/ReactQuery-FF4154?style=flat-square&logo=ReactQuery&logoColor=white"/>
+<img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=react&logoColor=white"/>
+<img alt="ESLint" src="https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white" />
+<img alt="Prettier" src="https://img.shields.io/badge/-Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=white" />
+<img alt="github actions" src="https://img.shields.io/badge/-GithubActions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
+<img alt="Storybook" src="https://img.shields.io/badge/-Storybook-FF4785?style=flat-square&logo=storybook&logoColor=white" />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</p>
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 👨‍👩‍👧‍👦 Owner: 팀원 소개
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<table>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<tr>
+  <td align=center>
+  <a href="https://github.com/hy57in">
+  <img src="https://avatars.githubusercontent.com/u/60775453?v=4" width="100px" />
+  <br/>
+  Frontend
+  <br/>
+  김효진
+  </a>
+  </td>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  <td align=center>
+  <a href="https://github.com/kawoou">
+  <img src="https://avatars.githubusercontent.com/u/1403026?v=4" width="100px" />
+  <br/>
+  iOS
+  <br/>
+  안정원
+  </a>
+  </td>
 
-## Learn More
+  <td align=center>
+  <a href="https://github.com/yongsoocho">
+  <img src="https://avatars.githubusercontent.com/u/55970982?v=4" width="100px"  />
+  <br/>
+  Backend
+  <br/>
+  조용수
+  </a>
+  </td>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+</tr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</table>
