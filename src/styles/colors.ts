@@ -1,0 +1,15 @@
+export const colors = {
+  mainBlue: '#2938be',
+  pointYellow: '#ffc737',
+  pointRed: '#ff473b',
+  black900: '#1B1B1D',
+  black800: '#424247',
+  black700: '#54545A',
+  black600: '#707077',
+  black500: '#8C8C95',
+  black400: '#B0B0BB',
+  black300: '#D0D0DB',
+  black200: '#EFF0F6',
+  black100: '#F8F8FC',
+  white: '#ffffff',
+};
