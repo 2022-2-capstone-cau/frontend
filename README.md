@@ -10,6 +10,48 @@
 
 [figma 주소](https://www.figma.com/file/TgcgnAHS0whuyprjFooV5I/%EC%BA%A1%EC%8A%A4%ED%86%A4?node-id=54%3A2052)
 
+## 실행 방법
+
+### 프로젝트 다운로드
+
+```bash
+$ git clone 프로젝트-주소
+$ cd 프로젝트-폴더
+$ git checkout 브랜치-이름
+$ npm install
+# or
+$ yarn install
+```
+
+프로젝트를 다운로드 받고 해당 폴더로 이동한 후 적절한 브랜치(main 등)로 이동하고 프로젝트에 필요한 외부 패키지를 설치합니다.
+
+### 개발 모드
+
+```shell
+$ npm run dev
+# or
+$ yarn dev
+```
+
+로컬 컴퓨터에서 개발 모드로 프로젝트를 실행하면, 수정한 파일을 저장했을 때 코드 변경 사항이 자동으로 브라우저에 반영됩니다.
+
+### 배포 모드
+
+```shell
+$ yarn build
+$ yarn start
+```
+
+코드 변경 사항이 자동으로 반영되진 않지만 코드 최적화로 인해 실행 속도가 빠릅니다.
+
+### 브라우저 실행
+
+```
+http://localhost:3000
+```
+
+브라우저에서 아래 주소로 접속하면 개발 중인 사이트를 볼 수 있습니다.
+
 
 ##  📖 Intro: 서비스 소개
 
