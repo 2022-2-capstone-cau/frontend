@@ -4,6 +4,8 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyles';
+import { RecoilRoot } from 'recoil';
+import { ToastContainer } from 'react-toastify';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
@@ -13,10 +15,13 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta name="description" content="엘라의 항공사 웹사이트의 컴포넌트 접근성 높이기 미션" />
       <title>Homebrary</title>
     </Head>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <RecoilRoot>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+        <ToastContainer limit={1} />
+      </ThemeProvider>
+    </RecoilRoot>
   </>
 );
 
