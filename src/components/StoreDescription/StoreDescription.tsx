@@ -27,11 +27,7 @@ const StoreDescription = ({ store }: StoreDescriptionProps) => {
         </S.DescriptionHeader>
         {store.is_certification !== null && (
           <S.CertificationMark>
-            <Image
-              src={checkIsCertificatedState(store.is_certification)}
-              alt="인증도장"
-              layout="fill"
-            />
+            <Image src={checkIsCertificatedState(store.is_certification)} alt="인증도장" fill />
           </S.CertificationMark>
         )}
       </S.DescriptionHeaderWrapper>

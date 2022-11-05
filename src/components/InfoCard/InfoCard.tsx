@@ -11,7 +11,7 @@ interface IInfoCard {
 }
 
 const InfoCard = ({ type, onClick, value }: IInfoCard) => {
-  const title = type === 'visited' ? `내가 다녀간\n오마카세` : `나의 오마카세\n랭킹`;
+  const title = type === 'visited' ? `내가 빌린 책\n반납까지` : `내가 빌리는\n중인 책`;
 
   return (
     <S.InfoCardWrapper type={type} onClick={onClick}>
@@ -19,7 +19,7 @@ const InfoCard = ({ type, onClick, value }: IInfoCard) => {
       <S.Title>{title}</S.Title>
       <S.ValueArea>
         <S.Value>{value ?? '-'}</S.Value>
-        {type === 'ranking' && <S.Suffix> 위</S.Suffix>}
+        <S.Suffix> 일</S.Suffix>
       </S.ValueArea>
       <S.Notification>자세히 보기 &gt;</S.Notification>
     </S.InfoCardWrapper>

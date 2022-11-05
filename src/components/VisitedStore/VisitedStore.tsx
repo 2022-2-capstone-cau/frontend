@@ -15,19 +15,17 @@ const VisitedStore = ({ id, name, image, date }: VisitedStoreProps) => {
   return (
     <S.StoreDisplay>
       <Link href={`/search/${id}`} passHref>
-        <a>
-          <S.StoreImageWrapper>
-            <Image
-              src={image ? `${process.env.API_ENDPOINT}${image}` : DEFAULT_IMAGE_URL}
-              alt="매장 이미지 미리보기"
-              fill
-            />
-          </S.StoreImageWrapper>
-          <S.StoreDescriptionWrapper>
-            <h1 className="store-title">{name}</h1>
-            {date && <pre className="store-desc">{date}</pre>}
-          </S.StoreDescriptionWrapper>
-        </a>
+        <S.StoreImageWrapper>
+          <Image
+            src={image ? `${process.env.API_ENDPOINT}${image}` : DEFAULT_IMAGE_URL}
+            alt="매장 이미지 미리보기"
+            fill
+          />
+        </S.StoreImageWrapper>
+        <S.StoreDescriptionWrapper>
+          <h1 className="store-title">{name}</h1>
+          {date && <pre className="store-desc">{date}</pre>}
+        </S.StoreDescriptionWrapper>
       </Link>
     </S.StoreDisplay>
   );

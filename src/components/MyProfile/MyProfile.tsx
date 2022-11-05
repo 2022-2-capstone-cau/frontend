@@ -18,21 +18,21 @@ const MyProfile = ({ userValue }: Props) => {
         <S.ProfileInformationWrapper>
           <S.Content>
             <span className="main">
-              {userValue.ranking !== UNDEF ? `${userValue.ranking}위` : '-'}
+              {userValue.ranking !== UNDEF ? `${userValue.ranking}` : '-'}
             </span>
-            <span className="sub">랭킹</span>
+            <span className="sub">인기 카테고리</span>
           </S.Content>
           <S.Content>
             <span className="main">
-              {userValue.stamp_count !== UNDEF ? `${userValue.stamp_count}번` : '-'}
+              {userValue.stamp_count !== UNDEF ? `${userValue.stamp_count} 권` : '-'}
             </span>
-            <span className="sub">도장깼어요</span>
+            <span className="sub">보관중인 책</span>
           </S.Content>
           <S.Content>
             <span className="main">
-              {userValue.power !== UNDEF ? `Lv.${userValue.power}` : '-'}
+              {userValue.power !== UNDEF ? `${userValue.power} 권` : '-'}
             </span>
-            <span className="sub">초밥력</span>
+            <span className="sub">대출중인 책</span>
           </S.Content>
         </S.ProfileInformationWrapper>
       </S.MyProfileSection>

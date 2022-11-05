@@ -44,7 +44,7 @@ const SearchNoData = ({ keyword }: SearchNoDataProps) => {
   return (
     <S.NoData>
       <S.ImageWrapper>
-        <Image src="/images/snowman.png" alt="마스코트" layout="fill" />
+        <Image src="/images/snowman.png" alt="마스코트" fill />
       </S.ImageWrapper>
       <S.NoDataMessage>{keyword}</S.NoDataMessage>
     </S.NoData>

@@ -31,7 +31,7 @@ const LocationChecker = ({
           <p className="address">{address}</p>
         </S.SelectedStoreInfo>
         <S.SelectedStoreImageWrapper>
-          <Image src={image} alt="매장 프리뷰 이미지" layout="fixed" width={200} height={160} />
+          <Image src={image} alt="매장 프리뷰 이미지" width={200} height={160} />
         </S.SelectedStoreImageWrapper>
       </S.SelectedStorePreviewWrapper>
     </S.LocationChecker>

@@ -18,13 +18,7 @@ const CertificationModal = ({ name }: CertificationModalProps) => {
       <S.ModalBox>
         <S.ModalInner>
           <S.CertificationModal>
-            <Image
-              src="/images/omo_logo.png"
-              alt="오모 로고"
-              width={104}
-              height={24}
-              layout="fixed"
-            />
+            <Image src="/images/omo_logo.png" alt="오모 로고" width={104} height={24} />
 
             <div className="store-message">
               <p>&apos;{name}&apos; 의 도장깨기가</p>

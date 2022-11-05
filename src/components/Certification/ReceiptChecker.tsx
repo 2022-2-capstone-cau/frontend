@@ -60,7 +60,7 @@ const ReceiptChecker = ({ blobUrl }: ReceiptCheckerProps) => {
           </S.ToggleDialogWrapper>
         )}
         <S.ReceiptImageWrapper>
-          <Image src={receiptImage} alt="영수증 미리보기" layout="fill" />
+          <Image src={receiptImage} alt="영수증 미리보기" fill />
           <QuestionIcon onClick={() => setIsToggleDialogOpen((prev) => !prev)} />
         </S.ReceiptImageWrapper>
       </S.ReceiptSection>
