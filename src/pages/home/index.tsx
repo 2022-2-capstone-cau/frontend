@@ -1,0 +1,127 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+
+import HorizontalLogo from '@assets/horizontal-logo.svg';
+import InfoCard from '@components/InfoCard';
+import Layout from '@components/Layout';
+import OmakaseStampCard from '@components/OmakaseStampCard';
+import RankingCard from '@components/Shared/RankingCard';
+import { IRankerState, useRefetchRankerList } from '@recoil/rankerState';
+import { useFetchUserValue, useRefetchUserValue } from '@recoil/userState';
+import { setAccessTokenOnHeader } from '@request';
+import getObjectFromQuery from '@utils/getObjectFormQuery';
+import setRefreshTokenOnCookie from '@utils/setRefreshTokenOnCookie';
+import { useRankerListValue } from '@recoil/rankerState';
+import { useMyOmakaseRecoilValue, useRefetchMyOmakases } from '@recoil/myOmakaseState';
+
+const Home = () => {
+  const { query, push } = useRouter();
+  const { contents: userState } = useFetchUserValue();
+  const { contents: top3Rankers, state: rankerListState } = useRankerListValue(3);
+  const {
+    contents: { omakases },
+  } = useMyOmakaseRecoilValue();
+  const refetchUserValue = useRefetchUserValue();
+  const refetchRankerList = useRefetchRankerList();
+  const refetchMyOmakases = useRefetchMyOmakases();
+
+  useEffect(() => {
+    if (!query.status) return;
+
+    const urlQuery = query.status as string;
+    const essentialData = urlQuery.split('?').slice(1);
+    const { access, refresh } = getObjectFromQuery(essentialData);
+
+    setAccessTokenOnHeader(access);
+    setRefreshTokenOnCookie(refresh);
+
+    if (access) {
+      refetchUserValue(Date.now);
+      refetchRankerList(Date.now);
+      refetchMyOmakases();
+    }
+  }, [query, refetchUserValue, refetchRankerList]);
+
+  return (
+    <Layout title="홈" noHeader>
+      <HomePage>
+        <MyInfoSection>
+          <LogoArea>
+            <HorizontalLogo />
+          </LogoArea>
+          <CatchPhraseArea>{'오늘은\n책 빌리는 날!'}</CatchPhraseArea>
+          <InfoCardArea>
+            <InfoCard
+              type="visited"
+              value={userState.stamp_count}
+              onClick={() => push('/mypage')}
+            />
+            <InfoCard type="ranking" value={userState.ranking} onClick={() => push('/ranking')} />
+          </InfoCardArea>
+        </MyInfoSection>
+        <RankingSection>
+          <RankingSectionTitle>내가 읽지 않은 IT 분야 책 엿보기 👀</RankingSectionTitle>
+          <RankingCardArea>
+            {rankerListState === 'hasValue' &&
+              top3Rankers &&
+              top3Rankers.map((props: IRankerState) => (
+                <RankingCard key={props.ranking} ranker={props} />
+              ))}
+          </RankingCardArea>
+        </RankingSection>
+      </HomePage>
+    </Layout>
+  );
+};
+
+export default Home;
+
+const HomePage = styled.main`
+  height: 100%;
+  background-color: #f8f8fc;
+  letter-spacing: -0.02em;
+`;
+
+const MyInfoSection = styled.section`
+  padding: 0 20px 20px 20px;
+  background-color: #fff;
+`;
+
+const LogoArea = styled.div`
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+`;
+
+const CatchPhraseArea = styled.h1`
+  line-height: 44.8px;
+  font-size: 32px;
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+`;
+
+const InfoCardArea = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const RankingSection = styled(MyInfoSection)`
+  padding-top: 20px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #54545a;
+`;
+
+const RankingSectionTitle = styled.h2`
+  ${({ theme }) => theme.fonts.subTitle1};
+  line-height: 32px;
+  color: #000;
+`;
+
+const RankingCardArea = styled.div`
+  margin-top: 20px;
+`;
