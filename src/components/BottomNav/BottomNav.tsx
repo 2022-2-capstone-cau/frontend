@@ -13,32 +13,40 @@ const BottomNav = () => {
 
   return (
     <S.BottomNav className="container">
-      <Link href="/home" passHref>
-        <a className={`nav-link ${router.pathname === '/home' ? 'active' : ''}`}>
-          <HomeIcon className="svg-path" />
-          <span>홈</span>
-        </a>
+      <Link
+        href="/home"
+        passHref
+        className={`nav-link ${router.pathname === '/home' ? 'active' : ''}`}
+      >
+        <HomeIcon className="svg-path" />
+        <span>홈</span>
       </Link>
 
-      <Link href="/search" passHref>
-        <a className={`nav-link ${router.pathname === '/search' ? 'active' : ''}`}>
-          <SearchIcon className="svg-complicated" />
-          <span>오마카세 찾기</span>
-        </a>
+      <Link
+        href="/search"
+        passHref
+        className={`nav-link ${router.pathname === '/search' ? 'active' : ''}`}
+      >
+        <SearchIcon className="svg-complicated" />
+        <span>책 검색</span>
       </Link>
 
-      <Link href="/ranking" passHref>
-        <a className={`nav-link ${router.pathname === '/ranking' ? 'active' : ''}`}>
-          <RankingIcon className="svg-paths" />
-          <span>랭킹</span>
-        </a>
+      <Link
+        href="/ranking"
+        passHref
+        className={`nav-link ${router.pathname === '/ranking' ? 'active' : ''}`}
+      >
+        <RankingIcon className="svg-paths" />
+        <span>채팅</span>
       </Link>
 
-      <Link href="/mypage" passHref>
-        <a className={`nav-link ${router.pathname === '/mypage' ? 'active' : ''}`}>
-          <MyPageIcon className="svg-paths" />
-          <span>MY 오모</span>
-        </a>
+      <Link
+        href="/mypage"
+        passHref
+        className={`nav-link ${router.pathname === '/mypage' ? 'active' : ''}`}
+      >
+        <MyPageIcon className="svg-paths" />
+        <span>MY 페이지</span>
       </Link>
     </S.BottomNav>
   );
