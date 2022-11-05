@@ -22,10 +22,6 @@
     "incremental": true
   },
   "extends": "./tsconfig.paths.json",
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.ts"],
+  "exclude": ["node_modules"]
 }
