@@ -6,44 +6,73 @@ import MyProfile from '@components/MyProfile';
 import VisitedStore from '@components/VisitedStore';
 import { IMyOmakase, useMyOmakaseRecoilValue, useRefetchMyOmakases } from '@recoil/myOmakaseState';
 import { useFetchUserValue } from '@recoil/userState';
+import { useEffect, useState } from 'react';
+import { getMyData } from '@request';
+import { GetServerSideProps, NextPage } from 'next';
 
-const MyPage = () => {
-  useRefetchMyOmakases();
+interface Props {
+  myDataResponse: any;
+}
 
-  const { contents: userValue } = useFetchUserValue();
-  const {
-    contents: { omakases },
-  } = useMyOmakaseRecoilValue();
+const MyPage: NextPage<Props> = ({ myDataResponse: initialMyDataResponse }: Props) => {
+  // useRefetchMyOmakases();
+  //
+  // const userValue = useFetchUserValue();
 
-  const replaceDate = (date: IMyOmakase['create_date']) => {
-    return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
-  };
+  // console.log(userValue);
+  // const {
+  //   contents: { omakases },
+  // } = useMyOmakaseRecoilValue();
+  //
+  // const replaceDate = (date: IMyOmakase['create_date']) => {
+  //   return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
+  // };
+
+  const [myData, setMyData] = useState({});
+
+  console.log(initialMyDataResponse);
+  //
+  // useEffect(() => {
+  //   (async () => await getMyData())().then((res) => {
+  //     setMyData(res);
+  //     console.log(res);
+  //   });
+  // }, []);
 
   return (
     <MyPageLayout>
-      <MyProfile userValue={userValue} />
+      <MyProfile
+        userValue={initialMyDataResponse.user}
+        summaryValue={initialMyDataResponse.summary}
+      />
       <MyPagePage className="container">
         <div className="store-list-title">
-          <span>{userValue.nickname}</span>님의 대출 목록
+          <span>{initialMyDataResponse.user.name}</span>님의 대출 목록
         </div>
-        <div className="store-list-layout">
-          {omakases &&
-            omakases.map((omakase: IMyOmakase) => (
-              <VisitedStore
-                key={omakase.id}
-                id={omakase.id}
-                image={omakase.photo_url}
-                name={omakase.name}
-                date={replaceDate(omakase.create_date)}
-              />
-            ))}
-        </div>
+        {/*<div className="store-list-layout">*/}
+        {/*  {userValue &&*/}
+        {/*      userValue.map((userValue: IMyOmakase) => (*/}
+        {/*      <VisitedStore*/}
+        {/*        key={omakase.id}*/}
+        {/*        id={omakase.id}*/}
+        {/*        image={omakase.photo_url}*/}
+        {/*        name={omakase.name}*/}
+        {/*        date={replaceDate(omakase.create_date)}*/}
+        {/*      />*/}
+        {/*    ))}*/}
+        {/*</div>*/}
       </MyPagePage>
     </MyPageLayout>
   );
 };
 
 export default MyPage;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const myDataResponse = await getMyData();
+
+  return { props: { myDataResponse } };
+};
 
 const MyPagePage = styled.div`
   .store-list-title {

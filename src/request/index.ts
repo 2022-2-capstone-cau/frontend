@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { IMyOmakase } from '@recoil/myOmakaseState';
 import { Omakases } from '@recoil/omakaseState';
 import { IRankerState } from '@recoil/rankerState';
@@ -24,13 +23,20 @@ export interface IResponseOmakases {
   total_elements: number;
 }
 
-const instance = axios.create({ baseURL: process.env.API_ENDPOINT });
+const instance = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT });
+
+console.log(process.env.API_ENDPOINT);
 
 export let isTokenOnHeader = false;
 export const setAccessTokenOnHeader = (token: string) => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   isTokenOnHeader = true;
 };
+const AUTH_TOKEN =
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDE1NDMyOTciLCJ1c2VyX2lkIjoxLCJpYXQiOjE2NjkxMzMyNDMsImV4cCI6MTc3Mzk1MzMyNDN9.7vzgrghnhZbUNNnwCZA-JowUkbZxl3wip1k54b1ijMQ';
+
+axios.defaults.baseURL = 'http://3.34.67.144:3000/';
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const requestSignup = (form: FormData) => instance.post(`/user`, form);
 export const requestDeleteUser = () => instance.delete(`/user`);
@@ -73,3 +79,7 @@ export const requestUserProfile = () => instance.get(`/user/profile`);
 
 export const requestCheckOmakaseIsCertificated = (id: number) =>
   instance.get(`/omakase/check?id=${id}`);
+
+// Homebrary API
+export const getHome = () => instance.get(`/api/v1/home/feed`);
+export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);

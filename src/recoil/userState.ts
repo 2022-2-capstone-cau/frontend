@@ -1,13 +1,13 @@
 import { atomFamily, selector, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 
-import { isTokenOnHeader, requestMyInfo } from '@request';
+import { isTokenOnHeader, getMyData } from '@request';
 
 const DEFAULT_USER_STATE = {
-  nickname: '',
-  profile_url: '',
-  stamp_count: 0,
-  ranking: 0,
-  power: 0,
+  user: {
+    user_id: '',
+    name: '',
+    profile: '',
+  },
 };
 
 const triggerState = atomFamily({
@@ -21,7 +21,7 @@ const userValue = selector({
     get(triggerState('userValue'));
     if (!isTokenOnHeader) return DEFAULT_USER_STATE;
 
-    const { data } = await requestMyInfo();
+    const { data } = await getMyData();
     return data;
   },
 });
