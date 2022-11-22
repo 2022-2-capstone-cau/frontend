@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 import { RANKING_CARD_BG_COLOR } from '@constants/shared';
 
-export const RankingCardWrapper = styled.div<{ rank: number }>`
+export const RankingCardWrapper = styled.div`
   position: relative;
   width: 100%;
   border-radius: 10px;
-  height: ${({ rank }) => ([1, 2, 3].includes(rank) ? '100px' : '66px')};
-  background-color: ${({ rank }) => RANKING_CARD_BG_COLOR[rank] ?? '#F8F8FC'};
+  height: 66px;
+  background-color: #f8f8fc;
 
   & + & {
     margin-top: 10px;

@@ -81,7 +81,7 @@ export const requestCheckOmakaseIsCertificated = (id: number) =>
   instance.get(`/omakase/check?id=${id}`);
 
 // Homebrary API
-export const getHome = () => instance.get(`/api/v1/home/feed`).then((res) => res.data.body);
+export const getHomeData = () => instance.get(`/api/v1/home/feed`).then((res) => res.data.body);
 export const getMyData = () => instance.get(`/api/v1/user/me/mypage`).then((res) => res.data.body);
 export const changeNickname = (nickname: string) =>
   instance.put(`/api/v1/user/me/nickname`, { nickname });

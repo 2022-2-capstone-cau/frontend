@@ -1,47 +1,18 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import styled from 'styled-components';
-
 import HorizontalLogo from '@assets/horizontal-logo.svg';
 import InfoCard from '@components/InfoCard';
 import Layout from '@components/Layout';
-import OmakaseStampCard from '@components/OmakaseStampCard';
 import RankingCard from '@components/Shared/RankingCard';
-import { IRankerState, useRefetchRankerList } from '@recoil/rankerState';
-import { useFetchUserValue, useRefetchUserValue } from '@recoil/userState';
-import { setAccessTokenOnHeader } from '@request';
-import getObjectFromQuery from '@utils/getObjectFormQuery';
-import setRefreshTokenOnCookie from '@utils/setRefreshTokenOnCookie';
-import { useRankerListValue } from '@recoil/rankerState';
-import { useMyOmakaseRecoilValue, useRefetchMyOmakases } from '@recoil/myOmakaseState';
+import { getHomeData } from '@request';
+import { GetServerSideProps, NextPage } from 'next';
 
-const Home = () => {
-  const { query, push } = useRouter();
-  const { contents: userState } = useFetchUserValue();
-  const { contents: top3Rankers, state: rankerListState } = useRankerListValue(3);
-  const {
-    contents: { omakases },
-  } = useMyOmakaseRecoilValue();
-  const refetchUserValue = useRefetchUserValue();
-  const refetchRankerList = useRefetchRankerList();
-  const refetchMyOmakases = useRefetchMyOmakases();
+interface Props {
+  homeDataResponse: any;
+}
 
-  useEffect(() => {
-    if (!query.status) return;
-
-    const urlQuery = query.status as string;
-    const essentialData = urlQuery.split('?').slice(1);
-    const { access, refresh } = getObjectFromQuery(essentialData);
-
-    setAccessTokenOnHeader(access);
-    setRefreshTokenOnCookie(refresh);
-
-    if (access) {
-      refetchUserValue(Date.now);
-      refetchRankerList(Date.now);
-      refetchMyOmakases();
-    }
-  }, [query, refetchUserValue, refetchRankerList]);
+const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Props) => {
+  const { push } = useRouter();
 
   return (
     <Layout title="홈" noHeader>
@@ -54,20 +25,24 @@ const Home = () => {
           <InfoCardArea>
             <InfoCard
               type="visited"
-              value={userState.stamp_count}
+              value={initialHomeDataResponse.rent.fastestRemainingReturnDay}
               onClick={() => push('/mypage')}
             />
-            <InfoCard type="ranking" value={userState.ranking} onClick={() => push('/ranking')} />
+            <InfoCard
+              type="ranking"
+              value={initialHomeDataResponse.rent.numberOfRental}
+              onClick={() => push('/ranking')}
+            />
           </InfoCardArea>
         </MyInfoSection>
         <RankingSection>
-          <RankingSectionTitle>내가 읽지 않은 IT 분야 책 엿보기 👀</RankingSectionTitle>
+          <RankingSectionTitle>
+            내가 읽지 않은 {initialHomeDataResponse.recommend.category.title} 분야 책 엿보기 👀
+          </RankingSectionTitle>
           <RankingCardArea>
-            {rankerListState === 'hasValue' &&
-              top3Rankers &&
-              top3Rankers.map((props: IRankerState) => (
-                <RankingCard key={props.ranking} ranker={props} />
-              ))}
+            {initialHomeDataResponse.recommend.list.map((item: any) => (
+              <RankingCard key={item.id} value={item.title} />
+            ))}
           </RankingCardArea>
         </RankingSection>
       </HomePage>
@@ -76,6 +51,12 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const homeDataResponse = await getHomeData();
+
+  return { props: { homeDataResponse } };
+};
 
 const HomePage = styled.main`
   height: 100%;

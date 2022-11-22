@@ -8,62 +8,19 @@ import { IRankerState } from '@recoil/rankerState';
 import * as S from './styles';
 import { useRouter } from 'next/router';
 
-/**
- * @usage Home, Ranking Page
- */
 const RankingCard = ({
-  ranker,
+  title,
   rankerInfoClickHandler,
 }: {
-  ranker: IRankerState;
+  title?: string;
   rankerInfoClickHandler?: () => void;
 }) => {
-  const { ranking, nickname, stamp_count, profile_url } = ranker;
-  const isRanker = [1, 2, 3].includes(ranking);
-  const imageURL = `${process.env.API_ENDPOINT}${profile_url}`;
   const { push } = useRouter();
 
   return (
-    <S.RankingCardWrapper className="ranking-card" rank={ranking}>
-      <S.ProfileArea rank={ranking}>
-        {!isRanker && (
-          <S.RankIndicator>
-            <span>
-              {ranking}
-              {RANK_SUFFIX}
-            </span>
-          </S.RankIndicator>
-        )}
-        {isRanker && (
-          <>
-            <S.ProfileBubble>
-              <MessageBubble />
-              <span>
-                {ranking}
-                {RANK_SUFFIX}
-              </span>
-            </S.ProfileBubble>
-            <S.ProfileImage src={imageURL || '/images/default-profile.png'} />
-          </>
-        )}
-      </S.ProfileArea>
+    <S.RankingCardWrapper className="ranking-card">
       <S.InfoArea>
-        <S.Nickname>
-          {nickname}
-          {!isRanker && (
-            <span>
-              ({stamp_count}
-              {STAMP_AMOUNT_SUFFIX})
-            </span>
-          )}
-        </S.Nickname>
-        {isRanker && (
-          <S.StampAmount>
-            {STAMP_AMOUNT_PREFIX}
-            {stamp_count}
-            {STAMP_AMOUNT_SUFFIX}
-          </S.StampAmount>
-        )}
+        <S.StampAmount>{title}</S.StampAmount>
       </S.InfoArea>
       <S.RightButton>
         <RightButton onClick={rankerInfoClickHandler ?? (() => push('/ranking'))} />
