@@ -5,12 +5,13 @@ import * as S from './styles';
 
 interface Props {
   children: React.ReactNode;
+  nickname: string;
 }
 
 const MyPageLayout = (props: Props) => {
   return (
     <S.Layout>
-      <MyPageHeader />
+      <MyPageHeader nickname={props.nickname} />
       <S.Main>{props.children}</S.Main>
       <BottomNav />
     </S.Layout>

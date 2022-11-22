@@ -5,26 +5,33 @@ import Link from 'next/link';
 import * as S from './styles';
 
 export interface VisitedStoreProps {
-  id: number;
-  name: string;
-  image: string;
-  date?: string;
+  value: {
+    id?: string;
+    thumbnailUrl?: string;
+    title?: string;
+    rentedAt?: string;
+    returnAt?: string;
+    isRent?: boolean;
+  };
 }
 
-const VisitedStore = ({ id, name, image, date }: VisitedStoreProps) => {
+const VisitedStore = ({
+  value: { id, thumbnailUrl, title, rentedAt, returnAt, isRent },
+}: VisitedStoreProps) => {
   return (
     <S.StoreDisplay>
       <Link href={`/search/${id}`} passHref>
         <S.StoreImageWrapper>
           <Image
-            src={image ? `${process.env.API_ENDPOINT}${image}` : DEFAULT_IMAGE_URL}
+            src={thumbnailUrl ? thumbnailUrl : DEFAULT_IMAGE_URL}
             alt="매장 이미지 미리보기"
             fill
           />
         </S.StoreImageWrapper>
         <S.StoreDescriptionWrapper>
-          <h1 className="store-title">{name}</h1>
-          {date && <pre className="store-desc">{date}</pre>}
+          <h1 className="store-title">{title}</h1>
+          {rentedAt && returnAt && <pre className="store-desc">{`${rentedAt} ~ ${returnAt}`}</pre>}
+          {isRent && <span className="store-desc">대여중</span>}
         </S.StoreDescriptionWrapper>
       </Link>
     </S.StoreDisplay>
