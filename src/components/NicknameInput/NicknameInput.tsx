@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { NicknameInputErrorType } from '@@types/shared';
 import { MAX_NICKNAME_LENGTH, MIN_NICKNAME_LENGTH } from '@constants/login';
 import { NICKNAME_INPUT_ERROR_TEXT } from '@constants/shared';
-import { requestCheckDuplicateName } from '@request';
+import { checkDuplicateName, requestCheckDuplicateName } from '@request';
 import debounce from '@utils/debounce';
 
 import * as S from './styles';
@@ -37,7 +37,10 @@ const NicknameInput = ({
     setNickname(value);
 
     if (!isNicknameValid(value)) return setErrorStatus('default');
-    requestCheckDuplicateName(value).catch(() => setErrorStatus('duplicate'));
+    const duplicate = await checkDuplicateName(value);
+    if (duplicate.allow === false) {
+      setErrorStatus('duplicate');
+    }
 
     setErrorStatus('usable');
   }, 200);
