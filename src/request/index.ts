@@ -89,3 +89,8 @@ export const checkDuplicateName = (nickname: string) =>
   instance
     .post(`/api/v1/user/me/nickname/validate`, { nickname: nickname })
     .then((res) => res.data.body);
+export const changeProfilePhotoImage = (image: File) => {
+  const formData = new FormData();
+  formData.append('image', image);
+  return instance.put(`/api/v1/user/me/image`, formData);
+};
