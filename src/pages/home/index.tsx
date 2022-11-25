@@ -39,11 +39,11 @@ const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Pr
           <RankingSectionTitle>
             내가 읽지 않은 {initialHomeDataResponse.recommend.category.title} 분야 책 엿보기 👀
           </RankingSectionTitle>
-          <RankingCardArea>
-            {initialHomeDataResponse.recommend.list.map((item: any) => (
-              <RankingCard key={item.id} value={item.title} />
-            ))}
-          </RankingCardArea>
+          {/*<RankingCardArea>*/}
+          {/*  {initialHomeDataResponse.recommend.list.map((item: any) => (*/}
+          {/*    <RankingCard key={item.id} value={item.title} />*/}
+          {/*  ))}*/}
+          {/*</RankingCardArea>*/}
         </RankingSection>
       </HomePage>
     </Layout>

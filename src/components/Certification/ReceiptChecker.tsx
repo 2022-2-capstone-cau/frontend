@@ -44,7 +44,7 @@ const ReceiptChecker = ({ blobUrl }: ReceiptCheckerProps) => {
           ref={fileInputRef}
           type="file"
           accept="image/*"
-          capture="camera"
+          // capture="camera"
         />
       </S.TitleWrapper>
       <S.ReceiptSection>
