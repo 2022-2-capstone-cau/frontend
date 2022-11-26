@@ -11,7 +11,27 @@ interface Props {
   homeDataResponse?: any;
 }
 
+const mockData = {
+  rent: {
+    fastestRemainingReturnDay: 1,
+    numberOfRental: 1,
+  },
+  recommend: {
+    category: {
+      id: '1',
+      title: 'ㅈㄷㄹㄷㅈㄹ',
+    },
+    list: [
+      {
+        id: '1',
+        title: 'ㄴㅇㄹㄴㅇㄹ',
+      },
+    ],
+  },
+};
+
 const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Props) => {
+  initialHomeDataResponse = mockData;
   const { push } = useRouter();
 
   return <div>home</div>;

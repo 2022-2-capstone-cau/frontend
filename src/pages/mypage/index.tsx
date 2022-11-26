@@ -9,7 +9,40 @@ interface Props {
   myDataResponse: any;
 }
 
+const mockData = {
+  user: {
+    user_id: '1',
+    name: '효진',
+    profile: '',
+  },
+  summary: {
+    popularCategory: {
+      title: 'IT',
+    },
+    numberOfOwn: 1,
+    numberOfRental: 1,
+  },
+  rents: [
+    {
+      id: '1',
+      thumbnailUrl: '',
+      title: '프로그래밍의 정석',
+      rentedAt: '',
+      returnAt: '',
+    },
+  ],
+  owns: [
+    {
+      id: '1',
+      thumbnailUrl: '',
+      title: '프로그래밍의 정석',
+      isRent: true,
+    },
+  ],
+};
+
 const MyPage: NextPage<Props> = ({ myDataResponse: initialMyDataResponse }: Props) => {
+  initialMyDataResponse = mockData;
   return (
     <MyPageLayout nickname={initialMyDataResponse.user.name}>
       <MyProfile
