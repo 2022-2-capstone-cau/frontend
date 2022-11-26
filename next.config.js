@@ -13,13 +13,8 @@ module.exports = {
   },
   reactStrictMode: true,
   assetPrefix: '.',
-  exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-    return {
-      '/': { page: '/' },
-      '/home': { page: '/home' },
-      '/chat': { page: '/chat' },
-      '/mypage': { page: '/mypage' },
-    };
-  },
   trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };

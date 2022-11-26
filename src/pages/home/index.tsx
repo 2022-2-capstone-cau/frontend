@@ -5,7 +5,7 @@ import InfoCard from '@components/InfoCard';
 import Layout from '@components/Layout';
 import RankingCard from '@components/Shared/RankingCard';
 import { getHomeData } from '@request';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 interface Props {
   homeDataResponse: any;
@@ -52,7 +52,7 @@ const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Pr
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const homeDataResponse = await getHomeData();
 
   return { props: { homeDataResponse } };

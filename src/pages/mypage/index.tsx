@@ -3,7 +3,7 @@ import MyPageLayout from '@components/Layout/MyPageLayout';
 import MyProfile from '@components/MyProfile';
 import VisitedStore from '@components/VisitedStore';
 import { getMyData } from '@request';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 interface Props {
   myDataResponse: any;
@@ -38,7 +38,7 @@ const MyPage: NextPage<Props> = ({ myDataResponse: initialMyDataResponse }: Prop
 
 export default MyPage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const myDataResponse = await getMyData();
 
   return { props: { myDataResponse } };
