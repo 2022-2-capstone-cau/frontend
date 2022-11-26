@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[180],{7644:function(n,u,t){"use strict";t.r(u),t(7294);var _=t(5893),c=function(){return(0,_.jsx)("div",{children:"채팅"})};u.default=c},9937:function(n,u,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/chat",function(){return t(7644)}])}},function(n){n.O(0,[774,888,179],function(){return n(n.s=9937)}),_N_E=n.O()}]);
