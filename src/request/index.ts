@@ -33,7 +33,7 @@ export const setAccessTokenOnHeader = (token: string) => {
   isTokenOnHeader = true;
 };
 const AUTH_TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDE1NDMyOTciLCJ1c2VyX2lkIjoxLCJpYXQiOjE2NjkxMzMyNDMsImV4cCI6MTc3Mzk1MzMyNDN9.7vzgrghnhZbUNNnwCZA-JowUkbZxl3wip1k54b1ijMQ';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjI1NDkzNzg2NDMiLCJ1c2VyX2lkIjozLCJpYXQiOjE2NjkzNTYxNTgsImV4cCI6MTc3Mzk3NTYxNTh9.E5r9TTbWSUm2MLWy_bqFcSXHatqhn4IYhrvOHp9gbQM';
 
 axios.defaults.baseURL = 'http://3.34.67.144:3000/';
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;

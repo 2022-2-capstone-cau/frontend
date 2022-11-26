@@ -8,11 +8,13 @@ import { getHomeData } from '@request';
 import { GetStaticProps, NextPage } from 'next';
 
 interface Props {
-  homeDataResponse: any;
+  homeDataResponse?: any;
 }
 
 const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Props) => {
   const { push } = useRouter();
+
+  return <div>home</div>;
 
   return (
     <Layout title="홈" noHeader>
@@ -52,11 +54,11 @@ const Home: NextPage<Props> = ({ homeDataResponse: initialHomeDataResponse }: Pr
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const homeDataResponse = await getHomeData();
-
-  return { props: { homeDataResponse } };
-};
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const homeDataResponse = await getHomeData();
+//
+//   return { props: { homeDataResponse } };
+// };
 
 const HomePage = styled.main`
   height: 100%;
